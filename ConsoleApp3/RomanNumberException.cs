@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ConsoleApp3
 {
-    class RomanNumberException : Exception
+    public class RomanNumberException : Exception
     {
         public RomanNumberException(string mess)
           : base(mess)

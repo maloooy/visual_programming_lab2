@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ConsoleApp3
 {
-    internal class RomanNumber : ICloneable, IComparable
+    public class RomanNumber : ICloneable, IComparable
     {
         private ushort number;
         private static int[] val = new int[] { 1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1 };
@@ -17,7 +17,7 @@ namespace ConsoleApp3
             if (n <= 0) throw new RomanNumberException($"number {n} is less or equal to 0");
             else this.number = n;
         }
-        public static RomanNumber Add(RomanNumber? n1, RomanNumber? n2)
+        public static RomanNumber operator +(RomanNumber? n1, RomanNumber? n2)
         {
             int num = n1.number + n2.number;
             if (num <= 0) throw new RomanNumberException("failed to add numbers");
@@ -27,7 +27,7 @@ namespace ConsoleApp3
                 return result;
             }
         }
-        public static RomanNumber Sub(RomanNumber? n1, RomanNumber? n2)
+        public static RomanNumber operator -(RomanNumber? n1, RomanNumber? n2)
         {
             int num = n1.number - n2.number;
             if (num <= 0) throw new RomanNumberException("subtraction result is less or equal to 0");
@@ -37,7 +37,7 @@ namespace ConsoleApp3
                 return result;
             }
         }
-        public static RomanNumber Mul(RomanNumber? n1, RomanNumber? n2)
+        public static RomanNumber operator *(RomanNumber? n1, RomanNumber? n2)
         {
             int num = n1.number * n2.number;
             if (num <= 0) throw new RomanNumberException("failed to multiply numbers");
@@ -47,7 +47,7 @@ namespace ConsoleApp3
                 return result;
             }
         }
-        public static RomanNumber Div(RomanNumber? n1, RomanNumber? n2)
+        public static RomanNumber operator /(RomanNumber? n1, RomanNumber? n2)
         {
 
             if (n2.number == 0) throw new RomanNumberException("division error");
