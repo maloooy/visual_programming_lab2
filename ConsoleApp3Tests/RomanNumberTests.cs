@@ -12,7 +12,13 @@ namespace ConsoleApp3.Tests
     public class RomanNumberTests
     {
         [TestMethod()]
-        public void AddTest()
+        public void IsNaturalNumberTest()
+        {
+            Assert.ThrowsException<RomanNumberException>(() => (new RomanNumber(0)));
+        }
+
+        [TestMethod()]
+        public void AdditionTest()
         {
             var n1 = new RomanNumber(15);
             var n2 = new RomanNumber(21);
@@ -22,17 +28,18 @@ namespace ConsoleApp3.Tests
         }
 
         [TestMethod()]
-        public void SubTest()
+        public void SubstractionTests()
         {
             var n1 = new RomanNumber(21);
             var n2 = new RomanNumber(15);
             var expected = new RomanNumber(6);
             RomanNumber actual = n1 - n2;
             Assert.AreEqual(expected.ToString(), actual.ToString());
+            Assert.ThrowsException<RomanNumberException>(() => (n2 - n1));
         }
 
         [TestMethod()]
-        public void MulTest()
+        public void MultiplyTest()
         {
             var n1 = new RomanNumber(20);
             var n2 = new RomanNumber(5);
@@ -42,18 +49,18 @@ namespace ConsoleApp3.Tests
         }
 
         [TestMethod()]
-        public void DivTest()
+        public void DivisionTests()
         {
             var n1 = new RomanNumber(100);
             var n2 = new RomanNumber(5);
             var expected = new RomanNumber(20);
             RomanNumber actual = n1 / n2;
             Assert.AreEqual(expected.ToString(), actual.ToString());
-            Assert.IsNotNull(n2.ToString());
+            Assert.ThrowsException<RomanNumberException>(() => (n2 / n1));
         }
 
         [TestMethod()]
-        public void ToStringTest()
+        public void ToStringFunctionTest()
         {
             RomanNumber n = new RomanNumber(27);
             string expected = "XXVII";
@@ -62,7 +69,7 @@ namespace ConsoleApp3.Tests
         }
 
         [TestMethod()]
-        public void CloneTest()
+        public void CloneFunctionTests()
         {
             RomanNumber n = new RomanNumber(27);
             RomanNumber expected = new RomanNumber(27);
@@ -72,7 +79,7 @@ namespace ConsoleApp3.Tests
         }
 
         [TestMethod()]
-        public void CompareToTest()
+        public void CompareToFunctionTest()
         {
             RomanNumber n = new RomanNumber(10);
             RomanNumber n1 = new RomanNumber(10);
